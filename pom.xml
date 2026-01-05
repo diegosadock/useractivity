@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.sadock</groupId>
-	<artifactId>tasktracker</artifactId>
+	<artifactId>useractivity</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
@@ -26,6 +26,12 @@
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 			<version>2.17.0</version>
+		</dependency>
+		<!-- GSON -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.13.2</version>
 		</dependency>
 	</dependencies>
 
@@ -47,11 +53,13 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>br.com.sadock.tasktracker.Main</mainClass>
+							<mainClass>useractivity.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
 			</plugin>
+
+			<!-- Shadow JAR para dependencies -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -65,9 +73,8 @@
 						<configuration>
 							<createDependencyReducedPom>false</createDependencyReducedPom>
 							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>br.com.sadock.tasktracker.Main</mainClass>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>useractivity.Main</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>
